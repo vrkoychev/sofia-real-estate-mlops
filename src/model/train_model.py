@@ -7,7 +7,9 @@ from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 
 # --- Paths ---
 PROCESSED_DATA_PATH = "sofia-real-estate-mlops/datasets/processed/processed_data.pkl"
+PREPROCESSOR_PATH = "sofia-real-estate-mlops/datasets/processed/preprocessor.pkl"
 MODEL_PATH = "sofia-real-estate-mlops/models/best_model.pkl"
+FULL_PIPELINE_PATH = "sofia-real-estate-mlops/models/full_pipeline.pkl"
 
 # --- Load processed features ---
 X_train, X_test, y_train, y_test = joblib.load(PROCESSED_DATA_PATH)
@@ -58,3 +60,17 @@ best_model = train_and_select_best_model(models, X_train, y_train, X_test, y_tes
 # --- Save best model ---
 joblib.dump(best_model, MODEL_PATH)
 print(f"✅ Best model saved at {MODEL_PATH}")
+
+from sklearn.pipeline import Pipeline
+
+preprocessor = joblib.load(PREPROCESSOR_PATH)
+
+full_pipeline = Pipeline([
+    ('preprocessor', preprocessor),
+    ('model', best_model)
+])
+
+# Save the full pipeline
+joblib.dump(full_pipeline, FULL_PIPELINE_PATH)
+print(f"✅ Full pipeline saved at {FULL_PIPELINE_PATH}")
+
