@@ -20,7 +20,7 @@ class AloSpider(scrapy.Spider):
 
     custom_settings = {
         "FEEDS": {
-            "data/properties.csv": {
+            "../../data/raw_data.csv": {
                 "format": "csv",
                 "encoding": "utf8",
                 "overwrite": True,
