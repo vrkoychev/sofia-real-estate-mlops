@@ -7,7 +7,7 @@ from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 
 # --- Paths ---
 PROCESSED_DATA_PATH = "sofia-real-estate-mlops/datasets/processed/processed_data.pkl"
-MODEL_PATH = "sofia-real-estate-mlops/models/best_regressor.pkl"
+MODEL_PATH = "sofia-real-estate-mlops/models/best_model.pkl"
 
 # --- Load processed features ---
 X_train, X_test, y_train, y_test = joblib.load(PROCESSED_DATA_PATH)
