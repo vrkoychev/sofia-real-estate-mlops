@@ -1,0 +1,83 @@
+# --- Python ---
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg
+*.egg-info/
+.eggs/
+*.manifest
+*.spec
+
+# --- Virtual Environments ---
+.venv/
+venv/
+env/
+ENV/
+*.env
+
+# --- Jupyter & Notebooks ---
+.ipynb_checkpoints/
+*.ipynb_convert/
+
+# --- Logs & Debug ---
+*.log
+*.out
+*.err
+logs/
+
+# --- Data (raw/processed) ---
+data/
+datasets/
+*.csv
+*.tsv
+*.parquet
+*.feather
+*.json
+*.xlsx
+
+# --- Machine Learning ---
+*.h5
+*.hdf5
+*.pkl
+*.joblib
+*.pt
+*.pth
+checkpoints/
+models/
+runs/  # common for MLflow/torch
+mlruns/ # MLflow default
+
+# --- Airflow ---
+airflow.cfg
+unittests.cfg
+*.db
+*.pid
+*.sqlite
+
+# --- FastAI/Scikit-learn/TF cache ---
+__results__/
+*.pkl.gz
+*.npz
+*.npy
+*.pkl
+
+# --- VS Code / PyCharm ---
+.vscode/
+.idea/
+
+# --- System / OS ---
+.DS_Store
+Thumbs.db
+
+# --- Streamlit ---
+.streamlit/
+
+# --- Gradio ---
+gradio_cached_examples/
+
+# --- Docker ---
+*.pid
+*.tar
+*.log
