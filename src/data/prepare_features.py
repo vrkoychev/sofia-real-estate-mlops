@@ -1,5 +1,4 @@
 import pandas as pd
-from datetime import datetime
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import OneHotEncoder, StandardScaler
 from sklearn.compose import ColumnTransformer
@@ -16,15 +15,11 @@ df = pd.read_csv(RAW_DATA_PATH)
 # --- Drop rows where target 'price' is NaN ---
 df = df.dropna(subset=['price'])
 
-# --- Feature Engineering ---
-current_year = datetime.now().year
-df['age'] = current_year - df['year_built']
-
-# Drop columns not needed as raw features
-df_features = df.drop(columns=['price', 'year_built'])
+# --- Drop columns not needed as raw features ---
+df_features = df.drop(columns=['price'])
 
 # --- Handle missing values ---
-numeric_cols = ['size', 'floor_number', 'age']
+numeric_cols = ['size', 'floor_number', 'year_built']
 categorical_cols = ['location', 'property_type', 'construction_type', 'floor_type']
 
 # Fill numeric NaNs with median
