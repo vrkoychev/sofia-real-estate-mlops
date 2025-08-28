@@ -1,83 +1,66 @@
-# --- Python ---
+# Data and outputs
+data/
+mlflow/mlruns/
+mlflow/models/
+*.json
+*.csv
+*.jsonl
+*.xlsx
+*.parquet
+
+# Python
 __pycache__/
 *.py[cod]
-*.pyo
-*.pyd
+*$py.class
 *.so
-*.egg
-*.egg-info/
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
 .eggs/
-*.manifest
-*.spec
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
 
-# --- Virtual Environments ---
-.venv/
-venv/
+# Environment
+.env
+.venv
 env/
+venv/
 ENV/
-*.env
+env.bak/
+venv.bak/
 
-# --- Jupyter & Notebooks ---
-.ipynb_checkpoints/
-*.ipynb_convert/
+# IDEs
+.vscode/settings.json
+.idea/
+*.swp
+*.swo
 
-# --- Logs & Debug ---
+# Jupyter
+.ipynb_checkpoints
+*/.ipynb_checkpoints/*
+
+# Logs
 *.log
-*.out
-*.err
 logs/
 
-# --- Data (raw/processed) ---
-data/
-datasets/
-*.csv
-*.tsv
-*.parquet
-*.feather
-*.json
-*.xlsx
-
-# --- Machine Learning ---
-*.h5
-*.hdf5
-*.pkl
-*.joblib
-*.pt
-*.pth
-checkpoints/
-models/
-runs/  # common for MLflow/torch
-mlruns/ # MLflow default
-
-# --- Airflow ---
-airflow.cfg
-unittests.cfg
-*.db
-*.pid
-*.sqlite
-
-# --- FastAI/Scikit-learn/TF cache ---
-__results__/
-*.pkl.gz
-*.npz
-*.npy
-*.pkl
-
-# --- VS Code / PyCharm ---
-.vscode/
-.idea/
-
-# --- System / OS ---
+# OS
 .DS_Store
 Thumbs.db
 
-# --- Streamlit ---
-.streamlit/
+# MLflow
+mlruns/
+mlartifacts/
 
-# --- Gradio ---
-gradio_cached_examples/
-
-# --- Docker ---
-*.pid
-*.tar
-*.log
+# Airflow
+airflow/logs/
+airflow/webserver_config.py
