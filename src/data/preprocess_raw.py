@@ -32,7 +32,7 @@ df['floor_number'] = df['floor_number'].str.extract(r'(-?\d+)')
 df['floor_number'] = pd.to_numeric(df['floor_number'], errors='coerce').astype('Int64')
 
 # --- Save cleaned dataset ---
-df.to_csv("sofia-real-estate-mlops/data/clean_data.csv", index=False)
+df.to_csv("sofia-real-estate-mlops/datasets/clean_data.csv", index=False)
 
 print("✅ Cleaning complete. Saved to sofia-real-estate-mlops/datasets/clean_data.csv")
 print(df.dtypes)
