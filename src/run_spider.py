@@ -1,5 +1,4 @@
 import subprocess
-import sys
 import os
 import argparse
 import logging
@@ -16,6 +15,16 @@ def run_spider(output_path: str):
     Args:
         output_path (str): The file path where the scraped data should be saved (e.g., '../data/raw/properties.csv').
     """
+
+    # Get the absolute path to the scrapy project directory
+    current_dir = Path(__file__).parent.absolute()
+    scrapy_project_dir = current_dir.parent / "scraping"
+    
+    # Verify the directory exists
+    if not scrapy_project_dir.exists() or not scrapy_project_dir.is_dir():
+        logger.error(f"Scrapy project directory not found: {scrapy_project_dir}")
+        raise NotADirectoryError(f"The path {scrapy_project_dir} is not a valid directory")
+
     # Construct the command to run the spider
     # The -O flag overwrites the file, --nolog reduces unnecessary console output
     command = [
@@ -27,13 +36,12 @@ def run_spider(output_path: str):
     logger.info(f"Starting spider. Output will be saved to: {output_path}")
     
     # Change to the directory where the scrapy.cfg file is located
-    # Assuming your project structure is: sofia_real_estate_mlops/alo_scraper/
-    scrapy_project_dir = os.path.join(os.path.dirname(__file__), '..', 'alo_scraper')
+    scrapy_project_dir = os.path.join(os.path.dirname(__file__), '..', 'scraping')
     
     try:
         result = subprocess.run(
             command,
-            cwd=scrapy_project_dir,
+            cwd=str(scrapy_project_dir),
             capture_output=True,
             text=True,
             check=True
@@ -55,10 +63,10 @@ def main():
     args = parser.parse_args()
     
     # Ensure the output directory exists
-    output_dir = os.path.dirname(args.output)
-    Path(output_dir).mkdir(parents=True, exist_ok=True)
+    output_path = Path(args.output)
+    output_path.parent.mkdir(parents=True, exist_ok=True)
     
-    run_spider(args.output)
+    run_spider(str(output_path))
 
 if __name__ == "__main__":
     main()
