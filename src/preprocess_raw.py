@@ -1,7 +1,10 @@
 import pandas as pd
 
+RAW_DATA_PATH = "sofia-real-estate-mlops/datasets/raw_data.csv"
+CLEAN_DATA_PATH = "sofia-real-estate-mlops/datasets/clean_data.csv"
+
 # Load raw dataset
-raw_df = pd.read_csv("sofia-real-estate-mlops/datasets/raw_data.csv")
+raw_df = pd.read_csv(RAW_DATA_PATH)
 
 # Make a copy to work on
 df = raw_df.copy()
@@ -32,7 +35,7 @@ df['floor_number'] = df['floor_number'].str.extract(r'(-?\d+)')
 df['floor_number'] = pd.to_numeric(df['floor_number'], errors='coerce').astype('Int64')
 
 # --- Save cleaned dataset ---
-df.to_csv("sofia-real-estate-mlops/datasets/clean_data.csv", index=False)
+df.to_csv(CLEAN_DATA_PATH, index=False)
 
-print("✅ Cleaning complete. Saved to sofia-real-estate-mlops/datasets/clean_data.csv")
+print(f"✅ Cleaning complete. Saved to {CLEAN_DATA_PATH}")
 print(df.dtypes)
