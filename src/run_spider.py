@@ -26,7 +26,6 @@ def run_spider(output_path: str):
         raise NotADirectoryError(f"The path {scrapy_project_dir} is not a valid directory")
 
     # Construct the command to run the spider
-    # The -O flag overwrites the file, --nolog reduces unnecessary console output
     command = [
         "scrapy", "crawl", "alo",
         "-O", output_path,
@@ -34,9 +33,10 @@ def run_spider(output_path: str):
     ]
 
     logger.info(f"Starting spider. Output will be saved to: {output_path}")
+    logger.info(f"Running command from directory: {scrapy_project_dir}")
     
     # Change to the directory where the scrapy.cfg file is located
-    scrapy_project_dir = os.path.join(os.path.dirname(__file__), '..', 'scraping')
+    # scrapy_project_dir = os.path.join(os.path.dirname(__file__), '..', 'scraping')
     
     try:
         result = subprocess.run(
@@ -61,10 +61,15 @@ def main():
                         help='Path to the output file (e.g., ../dataset/raw_data.csv)')
     
     args = parser.parse_args()
-    
+
+    # Convert to absolute path relative to project root
+    current_dir = Path(__file__).parent.absolute()
+    project_root = current_dir.parent
+    output_path = project_root / args.output
+
     # Ensure the output directory exists
-    output_path = Path(args.output)
-    output_path.parent.mkdir(parents=True, exist_ok=True)
+    # output_path = Path(args.output)
+    # output_path.parent.mkdir(parents=True, exist_ok=True)
     
     run_spider(str(output_path))
 
