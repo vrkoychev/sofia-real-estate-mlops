@@ -56,7 +56,7 @@ def train_model_task(processed_data_path: str, preprocessor_path: str,
 
 @flow(name="Sofia-Real-Estate-Pipeline")
 def main_flow():
-    """The main orchestration flow for the Sofia real estate pipeline."""
+    """The main orchestration flow for the Sofia Real Estate Pipeline."""
     # Define paths
     raw_data_path = "datasets/raw_data.csv"
     clean_data_path = "datasets/clean_data.csv"
@@ -80,7 +80,7 @@ def main_flow():
 
 if __name__ == "__main__":
     # Parse command line arguments
-    parser = argparse.ArgumentParser(description='Run the Sofia real estate pipeline')
+    parser = argparse.ArgumentParser(description='Run the Sofia Real Estate Pipeline')
     parser.add_argument('--skip-scraping', action='store_true',
                         help='Skip the scraping step (use existing data)')
     
