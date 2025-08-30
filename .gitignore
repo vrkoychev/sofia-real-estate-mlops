@@ -1,5 +1,6 @@
 # Data and outputs
 datasets/
+data/
 models/
 mlflow/mlruns/
 mlflow/models/
