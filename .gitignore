@@ -1,5 +1,6 @@
 # Data and outputs
 datasets/
+models/
 mlflow/mlruns/
 mlflow/models/
 *.json
